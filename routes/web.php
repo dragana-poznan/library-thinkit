@@ -22,4 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//librarian rotes
 Route::get('/librarian/home', [App\Http\Controllers\HomeController::class, 'LibrarianHome'])->name('home.librarian')->middleware('is_librarian');
