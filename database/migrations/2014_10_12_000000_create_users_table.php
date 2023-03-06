@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->boolean('is_librarian')->default(0);
+            $table->integer('librarian_id')->default(NULL);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

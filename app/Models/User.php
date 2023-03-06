@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'surname',
         'is_librarian',
+        'librarian_id',
         'email',
         'password',
     ];
