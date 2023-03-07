@@ -17,7 +17,8 @@ class AuthorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'surname' => $this->faker->lastName,
         ];
     }
 }
