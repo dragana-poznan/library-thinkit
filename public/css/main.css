@@ -1,0 +1,12 @@
+/* general settings*/
+
+/* start nav*/
+.navbar-expand-md .navbar-nav .dropdown-menu{
+    display: block;
+}
+.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
+    float: right;
+}
+.librarian-dashboard{
+    margin-top: 60px;
+}
