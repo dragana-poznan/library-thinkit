@@ -20,7 +20,7 @@
                         </div>
                     @endif
 
-                    <h3>Welcome to the Reader Dashboard</h3>
+                    <h3>Search Results</h3>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
@@ -38,10 +38,11 @@
                 @endif
             </div>
             <div class="card-body">
-                <form method="get" action="{{route('search.results')}}">
+                <form method="get" action="{{ route('search.results') }}">
                     <div class="form-group">
                         <label for="search">Search</label>
-                        <input name="search" type="text" class="form-control" id="search" aria-describedby="text" value="">
+                        <input name="search" type="text" class="form-control" id="search" aria-describedby="text"
+                            value="">
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>
@@ -59,7 +60,7 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach($books as $book)
+                        @foreach($searchRes as $book)
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $book->title }}</td>

@@ -28,6 +28,19 @@ class HomeController extends Controller
         return view('home', compact('books'));
     }
 
+    public function searcResults(Request $request)
+    {
+        // dd($request->search);
+        $search = $request->search;
+        $searchRes = Book::where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhere('book_no', 'LIKE', "%{$search}%")
+            ->orWhere('author_id', 'LIKE', "%{$search}%")
+            ->get();
+        // return $searchRes;
+        return view('search-results', compact('searchRes'));
+    }
+
     public function LibrarianHome()
     {
         return view('librarian.librarian-home');

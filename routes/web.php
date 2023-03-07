@@ -23,6 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/search-results', [App\Http\Controllers\HomeController::class, 'searcResults'])->name('search.results');
 
 //NAPRAVI GRUPE RUTA ZA LIBRARIANA I ZA READERA
 //librarian rotes
