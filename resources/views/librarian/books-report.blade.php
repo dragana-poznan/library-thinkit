@@ -23,6 +23,9 @@
     <div class="librarian-dashboard">
         <div class="container">
             <div class="card">
+                <div class="add-book-button btn btn-success">
+                    <a href="{{url('add-book')}}">Add Book</a>
+                </div>
                 <div class="card-header">
                     @if (Session::has('success'))
                         <div class="alert alert-success" role="alert">
@@ -40,10 +43,13 @@
                                 <th scope="col">Book No.</th>
                                 <th scope="col">Author</th>
                                 <th scope="col">Delete</th>
+                                <th scope="col">Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @php $i = 1; @endphp
+                            @php
+                                $i = 1;
+                            @endphp
                             @foreach ($books as $book)
                                 <tr>
                                     <th scope="row">{{ $i++ }}</th>
@@ -53,6 +59,9 @@
                                     <td>{{ $book->author_id }}</td>
                                     <td>
                                         <a class="btn btn-danger" href="{{ url('books-delete/' . $book->id) }}">Delete</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning" href="">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

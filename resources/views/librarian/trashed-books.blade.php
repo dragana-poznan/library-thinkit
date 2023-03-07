@@ -43,20 +43,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $i = 1; @endphp
-                            @foreach($books as $book)
-                                <tr>
-                                    <th scope="row">{{ $i++ }}</th>
-                                    <td>{{ $book->title }}</td>
-                                    <td>{{ $book->description }}</td>
-                                    <td>{{ $book->book_no }}</td>
-                                    <td>{{ $book->author_id }}</td>
-                                    <td>
-                                        <a class="btn btn-success"
-                                            href="{{ url('books-restore/' . $book->id) }}">Restore</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach($books as $book)
+                            <tr>
+                                <th scope="row">{{ $i++ }}</th>
+                                <td>{{ $book->title }}</td>
+                                <td>{{ $book->description }}</td>
+                                <td>{{ $book->book_no }}</td>
+                                <td>{{ $book->author_id }}</td>
+                                <td>
+                                    <a class="btn btn-success"
+                                        href="{{ url('books-restore/' . $book->id) }}">Restore</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

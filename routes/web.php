@@ -28,8 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //librarian rotes
 Route::get('/librarian/home', [App\Http\Controllers\HomeController::class, 'LibrarianHome'])->name('home.librarian')->middleware('is_librarian');
 
-//librarian cruds
+//librarian cruds of books
 Route::get('/books-list', [BookController::class, 'bookList'])->name('librarian.book.list');
+Route::get('/add-book', [BookController::class, 'addBook'])->name('librarian.book.add');
+Route::post('/save-book', [BookController::class, 'saveBook'])->name('librarian.book.save');
 Route::get('/books-delete/{id}', [BookController::class, 'bookDelete']);
 Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('trashed-books');
 Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');

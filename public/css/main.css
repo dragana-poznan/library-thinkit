@@ -10,3 +10,11 @@
 .librarian-dashboard{
     margin-top: 60px;
 }
+.add-book-button{
+    float: left;
+    width: 30%;
+    margin: 20px 20px 0;
+}
+.add-book-button a{
+    color: white;
+}
