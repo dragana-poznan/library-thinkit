@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,4 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/librarian/home', [App\Http\Controllers\HomeController::class, 'LibrarianHome'])->name('home.librarian')->middleware('is_librarian');
 
 //librarian cruds
-Route::resource('/books', BookController::class);
+Route::get('/books-list', [BookController::class, 'bookList'])->name('librarian.book.list');
+Route::get('/books-delete/{id}', [BookController::class, 'bookDelete']);
+Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('trashed-books');
+Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');
