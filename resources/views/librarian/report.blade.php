@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Books Report') }}</div>
+                <div class="card-header">{{ __('Report who made a changes') }}</div>
 
                 <div class="card-body">
                     @if(session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h3>Books report with actions</h3>
+                    <h3>Changes in Books</h3>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
@@ -23,9 +23,6 @@
 <div class="librarian-dashboard">
     <div class="container">
         <div class="card">
-            <div class="add-book-button btn btn-success">
-                <a href="{{ url('add-book') }}">Add Book</a>
-            </div>
             <div class="card-header">
                 @if(Session::has('success'))
                     <div class="alert alert-success" role="alert">
@@ -38,12 +35,10 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Book No.</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Delete</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">User who made changes</th>
+                            <th scope="col">Changed Book</th>
+                            <th scope="col">Date Change</th>
+                            <th scope="col">Date of Update</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,13 +52,6 @@
                                 <td>{{ $book->description }}</td>
                                 <td>{{ $book->book_no }}</td>
                                 <td>{{ $book->author_id }}</td>
-                                <td>
-                                    <a class="btn btn-danger"
-                                        href="{{ url('books-delete/' . $book->id) }}">Delete</a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-warning" href="">Edit</a>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>

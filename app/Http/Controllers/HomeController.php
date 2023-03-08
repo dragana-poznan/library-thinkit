@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -46,10 +47,9 @@ class HomeController extends Controller
         return view('librarian.librarian-home');
     }
 
-    //display all books in report tabel
-    // public function bookList()
-    // {
-    //     $books = Book::all();
-    //     return view('librarian.books-report', compact('books'));
-    // }
+    public function testPivot()
+    {
+        $users = User::all();
+        return view('librarian.test', compact('users'));
+    }
 }

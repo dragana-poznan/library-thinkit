@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,4 +39,4 @@ Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('tras
 Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');
 
 //librarian cruds of authors
-
+Route::get('/test', [HomeController::class, 'testPivot'])->name('test.pivot');
