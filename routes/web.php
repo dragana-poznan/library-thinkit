@@ -42,5 +42,8 @@ Route::get('/books-delete/{id}', [BookController::class, 'bookDelete']);
 Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('trashed-books');
 Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');
 
-//librarian cruds of authors
 Route::get('/test', [HomeController::class, 'testPivot'])->name('test.pivot');
+//librarian cruds of authors
+Route::get('/authors', [AuthorController::class, 'authors'])->name('librarian.authors');
+Route::get('/author-create', [AuthorController::class, 'authorCreate']);
+Route::post('/author-save', [AuthorController::class, 'authorSave']);

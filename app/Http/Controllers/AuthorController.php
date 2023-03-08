@@ -29,5 +29,41 @@ class AuthorController extends Controller
         return 'Author added';
     }
 
+    public function authors()
+    {
+        return view('librarian.authors');
+    }
 
+    public function authorCreate()
+    {
+        return view('librarian.authors-create');
+    }
+
+    public function authorSave(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'image' => 'nullable||image',
+        ], [
+            'name.required' => 'Name is required',
+            'surname.required' => 'Surname is required',
+        ]);
+
+        $name = $request->name;
+        $surname =  $request->surname;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . ' ' . $image->getClientOriginalName();
+            $image->move(\public_path("image/"), $imageName);
+        }
+
+        $author = new Author();
+        $author->name = $name;
+        $author->surname = $surname;
+        $author->image = $imageName;
+        $author->save();
+
+        return back()->with('success', 'Author created successfully.');
+    }
 }
