@@ -34,6 +34,10 @@ Route::get('/librarian/home', [App\Http\Controllers\HomeController::class, 'Libr
 Route::get('/books-list', [BookController::class, 'bookList'])->name('librarian.book.list');
 Route::get('/add-book', [BookController::class, 'addBook'])->name('librarian.book.add');
 Route::post('/save-book', [BookController::class, 'saveBook'])->name('librarian.book.save');
+
+Route::get('/books-edit/{id}', [BookController::class, 'editBook'])->name('librarian.book.edit');
+Route::post('/books-update', [BookController::class, 'updateBook'])->name('librarian.book.update');
+
 Route::get('/books-delete/{id}', [BookController::class, 'bookDelete']);
 Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('trashed-books');
 Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');

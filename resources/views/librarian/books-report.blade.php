@@ -62,7 +62,7 @@
                                         href="{{ url('books-delete/' . $book->id) }}">Delete</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Edit</a>
+                                    <a class="btn btn-warning" href="{{ url('books-edit/' . $book->id) }}">Edit</a>
                                 </td>
                             </tr>
                         @endforeach

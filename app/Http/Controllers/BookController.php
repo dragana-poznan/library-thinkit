@@ -64,7 +64,7 @@ class BookController extends Controller
         // $bookUser->user_id = intval($request->loged_librarian);
         // $bookUser->book_id = intval($request->$book_no);
         // $bookUser->save();
-     
+
         return redirect(route('librarian.book.list'))->with('success', 'Book created successfully.');
         // return back()->with('success', 'Book created successfully.');
 
@@ -72,7 +72,38 @@ class BookController extends Controller
 
     //update books
 
+    public function editBook($id)
+    {
+        $authors = Author::all();
 
+        $data = Book::where('id', '=', $id)->first();
+        return view('librarian.edit-book', compact('data', 'authors'));
+    }
+
+    public function updateBook(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'book_no' => ['required', 'max:255'],
+        ], [
+            'title.required' => 'Title is required',
+            'book_no.required' => 'Book number is required',
+        ]);
+
+        $id = $request->id;
+        $title = $request->title;
+        $description =  $request->description;
+        $book_no =  intval($request->book_no);
+
+        Book::where('id', '=', $id)->update([
+            'title' => $title,
+            'description' => $description,
+            'book_no' => $book_no,
+        ]);
+
+        return redirect(route('librarian.book.list'))->with('success', 'Book updated successfully.');
+    }
 
     /***
      * 
@@ -102,6 +133,4 @@ class BookController extends Controller
         $book->restore();
         return redirect('books-list')->with('success', 'Book Restored');
     }
-
-    
 }
