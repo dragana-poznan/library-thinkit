@@ -31,7 +31,8 @@ class AuthorController extends Controller
 
     public function authors()
     {
-        return view('librarian.authors');
+        $authors = Author::all();
+        return view('librarian.authors', compact('authors'));
     }
 
     public function authorCreate()

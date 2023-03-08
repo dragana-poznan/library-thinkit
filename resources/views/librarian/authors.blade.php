@@ -46,6 +46,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach($authors as $author)
+                            <tr>
+                                <th scope="row">{{ $i++ }}</th>
+                                <td>{{ $author->name }}</td>
+                                <td>{{ $author->surname }}</td>
+                                <td>{{ $author->image }}</td>
+                                <td>
+                                    <a class="btn btn-danger"
+                                        href="">Delete</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning"
+                                        href="">Edit</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
