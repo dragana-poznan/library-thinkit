@@ -19,6 +19,18 @@
                 </div>
             </div>
             <div class="container">
+                <div class="pb-8">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <p>Something went wrong...</p>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <form method="post" action="{{ route('librarian.book.save') }}">
                     @csrf
                     <div class="form-group">
@@ -69,8 +81,8 @@
                         @enderror
                     </div>
                     <div hidden class="form-group">
-                        <label for="loged-librarian">Loged Librarian</label>
-                        <input name="loged-librarian" type="text" class="form-control" id="loged-librarian"
+                        <label for="loged_librarian">Loged Librarian</label>
+                        <input name="loged_librarian" type="text" class="form-control" id="loged_librarian"
                             value="{{ Auth::user()->id }}">
                     </div>
                     <div class="form-group">
@@ -80,15 +92,6 @@
                     </div>
                 </form>
             </div>
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div>
     </div>
 </div>

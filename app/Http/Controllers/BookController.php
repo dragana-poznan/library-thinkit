@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\BookUser;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -36,7 +37,7 @@ class BookController extends Controller
     public function saveBook(Request $request)
     {
         // dd($request->all());
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable',
             'book_no' => ['required', 'string', 'max:255', 'unique:books'],
@@ -58,6 +59,11 @@ class BookController extends Controller
         $book->book_no = $book_no;
         $book->author_id = $author_id;
         $book->save();
+
+        $bookUser = new BookUser();
+        $bookUser->user_id = $request->loged_librarian;
+        $bookUser->book_id = $request->$book_no;
+        $bookUser->save();
      
         // return back()->with('success', 'Book created successfully.');
 
