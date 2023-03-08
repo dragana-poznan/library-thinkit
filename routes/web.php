@@ -36,3 +36,6 @@ Route::post('/save-book', [BookController::class, 'saveBook'])->name('librarian.
 Route::get('/books-delete/{id}', [BookController::class, 'bookDelete']);
 Route::get('/trashed-books', [BookController::class, 'onlyTrashed'])->name('trashed-books');
 Route::get('/books-restore/{id}', [BookController::class, 'restore'])->name('restored-books');
+
+//librarian cruds of authors
+

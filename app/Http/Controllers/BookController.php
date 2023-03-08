@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -28,10 +29,37 @@ class BookController extends Controller
     //create books
     public function addBook()
     {
-        return view('librarian.add-book');
+        $authors = Author::all();
+        return view('librarian.add-book', compact('authors'));
     }
 
-    public function saveBook(Request $request){
+    public function saveBook(Request $request)
+    {
+        // dd($request->all());
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'book_no' => ['required', 'string', 'max:255', 'unique:books'],
+            'author_id' => ['required', 'max:255', 'required']
+        ], [
+            'title.required' => 'Title is required',
+            'book_no.required' => 'Book number is required',
+            'author_id.required' => 'Author number is required',
+        ]);
+
+        $title = $request->title;
+        $description =  $request->description;
+        $book_no =  $request->book_no;
+        $author_id =  $request->author_id;
+
+        $book = new Book();
+        $book->title = $title;
+        $book->description = $description;
+        $book->book_no = $book_no;
+        $book->author_id = $author_id;
+        $book->save();
+     
+        // return back()->with('success', 'Book created successfully.');
 
     }
 
@@ -67,4 +95,6 @@ class BookController extends Controller
         $book->restore();
         return redirect('books-list')->with('success', 'Book Restored');
     }
+
+    
 }

@@ -52,7 +52,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'librarian_id'=> 'nullable',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -71,9 +70,6 @@ class RegisterController extends Controller
             'surname' => $data['surname'],
             //by default it is not librarian
             'is_librarian' =>  0,
-            //the first id of any user in database table user can be 1, so we can start from 0
-            //we can see who is loged in through session and with updated_at column we find out who is changed data
-            'librarian_id'=> 0,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

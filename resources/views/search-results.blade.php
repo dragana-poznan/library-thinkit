@@ -46,6 +46,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>
+                <br>
+                <br>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>

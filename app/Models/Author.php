@@ -17,4 +17,9 @@ class Author extends Model
         'surname',
         'image',
     ];
+
+    //one author multiple books one to meny
+    public function books(){
+        return $this->hasMany(Book::class);
+    }
 }

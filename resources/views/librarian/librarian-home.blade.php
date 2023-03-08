@@ -29,16 +29,16 @@
                 </div>
                 <div class="card-body">
                     <div class="col-sm-3 float-left">
-                        <a class="btn btn-primary" href="">Author report button link</a>
+                        <a class="btn btn-primary" href="">Author report</a>
                     </div>
                     <div class="col-sm-3 float-left">
-                        <a class="btn btn-secondary" href="{{ route('librarian.book.list') }}">Books report button link</a>
+                        <a class="btn btn-secondary" href="{{ route('librarian.book.list') }}">Books report</a>
                     </div>
                     <div class="col-sm-3 float-left">
-                        <a class="btn btn-info" href="{{ route('trashed-books') }}">Trashed books link</a>
+                        <a class="btn btn-info" href="{{ route('trashed-books') }}">Trashed books</a>
                     </div>
                     <div class="col-sm-3 float-left">
-                        <a class="btn btn-success" href="">Users report button link</a>
+                        <a class="btn btn-success" href="">Users report</a>
                     </div>
                 </div>
             </div>

@@ -14,47 +14,81 @@
                         </div>
                     @endif
                     <h3>Add a Book</h3>
+                    {{ Auth::user()->name }} {{ Auth::user()->surname }}
                     {{ __('You are logged in!') }}
                 </div>
             </div>
             <div class="container">
-                <form method="post" action="{{ url('save-book') }}">
+                <form method="post" action="{{ route('librarian.book.save') }}">
                     @csrf
                     <div class="form-group">
                         <label for="title">Book title</label>
                         <input name="title" type="text" class="form-control" id="title"
                             placeholder="Add the book title">
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="number">Book Number</label>
                         <input name="number" type="text" class="form-control" id="number"
                             placeholder="Add the book number">
+                        @error('number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="author">Chose Author from Database</label>
                         <select name="author" class="form-control" id="author">
                             <option>Chose author on dropdown</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            @foreach($authors as $author)
+                                <option value="{{ $author->id }}">
+                                    {{ $author->name }}
+
+                                    {{ $author->surname }}
+                                </option>
+                            @endforeach
                         </select>
+                        @error('author')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="form-group">
+                    <div hidden class="form-group">
                         <label for="loged-librarian">Loged Librarian</label>
-                        <input name="loged-librarian" type="text" class="form-control" id="loged-librarian" value="">
+                        <input name="loged-librarian" type="text" class="form-control" id="loged-librarian"
+                            value="{{ Auth::user()->id }}">
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-secondary">Back</button>
-                        <button type="button" class="btn btn-success">Add Book</button>
+                        <a href="{{ route('librarian.book.list') }}"
+                            class="btn btn-secondary">Back</a>
+                        <button type="submit" class="btn btn-success">Add Book</button>
                     </div>
                 </form>
             </div>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -1,20 +1,24 @@
 /* general settings*/
 
 /* start nav*/
-.navbar-expand-md .navbar-nav .dropdown-menu{
+.navbar-expand-md .navbar-nav .dropdown-menu {
     display: block;
 }
-.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
+
+.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm {
     float: right;
 }
-.librarian-dashboard{
+
+.librarian-dashboard {
     margin-top: 60px;
 }
-.add-book-button{
+
+.add-book-button {
     float: left;
-    width: 30%;
+    width: 100px;
     margin: 20px 20px 0;
 }
-.add-book-button a{
+
+.add-book-button a {
     color: white;
 }

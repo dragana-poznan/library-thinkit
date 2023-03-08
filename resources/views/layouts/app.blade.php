@@ -44,15 +44,17 @@
                         <ul class="navbar-nav ms-auto">
                             <!-- Authentication Links -->
                             @guest
-                                @if (Route::has('login'))
+                                @if(Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <a class="nav-link"
+                                            href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                 @endif
 
-                                @if (Route::has('register'))
+                                @if(Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link"
+                                            href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
@@ -60,14 +62,14 @@
                                     <span hidden>
                                         {{ $data = Auth::user()->is_librarian }}
                                     </span>
-
-                                    @if ($data == 1)
-                                        <a class="nav-link" href="{{ route('home.librarian') }}">Librarian Dashboard</a>
+                                    @if($data == 1)
+                                        <a class="nav-link"
+                                            href="{{ route('home.librarian') }}">Librarian
+                                            Dashboard</a>
                                     @endif
-                                    @if ($data == 0)
-                                        <a class="nav-link" href="{{ route('home') }}">Home</a>
-                                    @endif
-
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -76,14 +78,13 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
+                                        <form id="logout-form" action="{{ route('logout') }}"
+                                            method="POST" class="d-none">
                                             @csrf
                                         </form>
                                     </div>

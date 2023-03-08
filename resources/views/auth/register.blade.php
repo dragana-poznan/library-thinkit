@@ -36,7 +36,7 @@
                                     name="surname" value="{{ old('surname') }}" required autocomplete="surname"
                                     autofocus>
 
-                                @error('name')
+                                @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
