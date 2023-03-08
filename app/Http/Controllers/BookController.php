@@ -40,8 +40,8 @@ class BookController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable',
-            'book_no' => ['required', 'string', 'max:255', 'unique:books'],
-            'author_id' => ['required', 'max:255', 'required']
+            'book_no' => ['required', 'max:255', 'unique:books'],
+            'author_id' => ['required']
         ], [
             'title.required' => 'Title is required',
             'book_no.required' => 'Book number is required',
@@ -50,8 +50,8 @@ class BookController extends Controller
 
         $title = $request->title;
         $description =  $request->description;
-        $book_no =  $request->book_no;
-        $author_id =  $request->author_id;
+        $book_no =  intval($request->book_no);
+        $author_id =  intval($request->author_id);
 
         $book = new Book();
         $book->title = $title;
@@ -60,11 +60,12 @@ class BookController extends Controller
         $book->author_id = $author_id;
         $book->save();
 
-        $bookUser = new BookUser();
-        $bookUser->user_id = $request->loged_librarian;
-        $bookUser->book_id = $request->$book_no;
-        $bookUser->save();
+        // $bookUser = new BookUser();
+        // $bookUser->user_id = intval($request->loged_librarian);
+        // $bookUser->book_id = intval($request->$book_no);
+        // $bookUser->save();
      
+        return redirect(route('librarian.book.list'))->with('success', 'Book created successfully.');
         // return back()->with('success', 'Book created successfully.');
 
     }

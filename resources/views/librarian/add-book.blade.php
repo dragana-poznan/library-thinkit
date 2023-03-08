@@ -53,18 +53,18 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="number">Book Number</label>
-                        <input name="number" type="text" class="form-control" id="number"
+                        <label for="book_no">Book Number</label>
+                        <input name="book_no" type="text" class="form-control" id="book_no"
                             placeholder="Add the book number">
-                        @error('number')
+                        @error('book_no')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="author">Chose Author from Database</label>
-                        <select name="author" class="form-control" id="author">
+                        <label for="author_id">Chose Author from Database</label>
+                        <select name="author_id" class="form-control" id="author_id">
                             <option>Chose author on dropdown</option>
                             @foreach($authors as $author)
                                 <option value="{{ $author->id }}">
@@ -74,7 +74,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('author')
+                        @error('author_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
